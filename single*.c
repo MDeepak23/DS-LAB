@@ -67,7 +67,32 @@ struct node
          return;
          
 }
-         int main() {
+  
+ struct node* delete_at_position(struct       node *head, int pos) {
+
+    struct node *ptr,*temp;
+    ptr=head;
+    temp=head;
+       if(head==NULL) {
+        printf("List is already empty");
+    }
+    else if(head->data==NULL) {
+        free(head);
+        head=NULL;
+    }
+
+
+    while(pos!=1) {
+
+        ptr=temp;
+        temp=temp->data;
+        pos--;
+    }
+    ptr->data=temp->data;
+    free(temp) ;
+    return head;
+
+}         int main() {
 		 struct node *head=NULL;
 		 head=(struct node*)malloc(sizeof(struct node*));
 		 head->data=10;
@@ -82,17 +107,27 @@ struct node
 		 current->data=30;
 		 current->next=NULL;
 		 head->next->next=current;
+   printf("before insertion\n");
 		 display(head);
+   printf("insert at begin\n");
 		 head=insert_at_beginning(head,40);
 		 display(head);
+   printf("insert at end\n");
 		 insert_at_end(head,50);
 		 display(head);
+  printf("delete at begin\n");
 		head= delete_at_beginning(head);
 		 display(head);
+   printf("delete at end\n");
 		 delete_at_end(head);
 		 display(head);
+   printf("insert at position\n");
 		 insert_at_position(head,60,2);
 		 display(head);
+   printf("delete at position\n");
+   delete_at_position(head,2);
+		 display(head);
+		 
 		 }
 		 
 		 
