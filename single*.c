@@ -76,7 +76,7 @@ struct node
        if(head==NULL) {
         printf("List is already empty");
     }
-    else if(head->data==NULL) {
+    else if(head->next==NULL) {
         free(head);
         head=NULL;
     }
@@ -85,10 +85,10 @@ struct node
     while(pos!=1) {
 
         ptr=temp;
-        temp=temp->data;
+        temp=temp->next;
         pos--;
     }
-    ptr->data=temp->data;
+    ptr->next=temp->next;
     free(temp) ;
     return head;
 
@@ -125,7 +125,7 @@ struct node
 		 insert_at_position(head,60,2);
 		 display(head);
    printf("delete at position\n");
-   delete_at_position(head,2);
+   head=delete_at_position(head,2);
 		 display(head);
 		 
 		 }
